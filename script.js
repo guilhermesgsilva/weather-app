@@ -5,14 +5,12 @@ const weatherDetails = document.querySelector(".weather-details");
 const error404 = document.querySelector(".not-found");
 
 search.addEventListener("click", () => {
-  const API_KEY =
-    "https://www.freecodecamp.org/news/how-to-use-environment-variables-in-vanillajs/";
   const city = document.querySelector(".search-box input").value;
 
   if (!city) return;
 
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+    `${window.ENV.API_URL}/data/2.5/weather?q=${city}&appid=${window.ENV.API_KEY}`
   )
     .then((resp) => resp.json())
     .then((json) => {
