@@ -1,0 +1,27 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Generate config.js with environment variables
+        run: |
+          echo "window.ENV = {" > config.js
+          echo "  API_KEY: '${{ secrets.API_KEY }}'," >> config.js
+          echo "  API_URL: '${{ secrets.API_URL }}'" >> config.js
+          echo "};" >> config.js
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: main    # Deploy to the `main` branch
+          folder: .       # Deploy the root folder (where index.html is)
