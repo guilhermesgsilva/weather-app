@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # Trigger on push to the main branch
+      - main  # Trigger on push to the main branch
 
 jobs:
   build:
@@ -21,6 +21,16 @@ jobs:
           echo "  API_URL: '${{ secrets.API_URL }}'" >> config.js
           echo "};" >> config.js
 
+      # Commit config.js to the repository (if changes exist)
+      - name: Commit config.js to main branch
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add config.js
+          git diff --cached  # This will show any changes that are staged to commit
+          git commit -m "Add generated config.js" || echo "No changes to commit"
+          git push origin main
+
       # Debugging: List files and check content of config.js
       - name: List files and show config.js content
         run: |
@@ -31,6 +41,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: main # Deploy to the gh-pages branch
-          folder: . # Deploy the entire root folder (where index.html is)
-
+          branch: main  # Deploy to the main branch
+          folder: .  # Deploy the entire root folder (where index.html is)
