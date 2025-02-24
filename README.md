@@ -1,16 +1,16 @@
 # Weather App
 
-A simple weather application built using vanilla JavaScript, HTML, and CSS. This project fetches real-time weather data using the [OpenWeatherMap API](https://openweathermap.org/).
+A simple weather app built with vanilla JavaScript that allows users to check the current weather conditions for any city. The app fetches weather data from the [OpenWeatherMap API](https://openweathermap.org/).
 
 ## Features
-- Get real-time weather updates for any location
-- Displays temperature, weather conditions, and humidity
-- Search functionality for different cities
+
+- Search for weather by city name
+- Displays current temperature, humidity, weather description, and more
 - Responsive design
-- Built with pure JavaScript, no dependencies
 
 ## Demo
-[Live Demo]()
+
+[Live Demo](https://guilhermesgsilva-weather-app.netlify.app/)
 
 ## Installation
 
@@ -24,12 +24,18 @@ A simple weather application built using vanilla JavaScript, HTML, and CSS. This
    ```
 3. Open `index.html` in your browser.
 
-## API Setup
+## Set up your development environment
 
 1. Sign up at [OpenWeatherMap](https://openweathermap.org/) and get your free API key.
-2. Open `script.js` and replace `YOUR_API_KEY` with your actual API key.
+
+Create a file named config.js in the root of the project and add the following code:
+
+2. Create a file named `config.js` in the root of the project and add the following code:
    ```js
-   const apiKey = 'YOUR_API_KEY';
+   window.ENV = {
+     API_KEY: "your_api_key", // Replace with your OpenWeatherMap API key
+     API_URL: "https://api.openweathermap.org",
+   };
    ```
 
 ## Usage
@@ -39,6 +45,7 @@ A simple weather application built using vanilla JavaScript, HTML, and CSS. This
 3. Refresh the page to search for a new location.
 
 ## Project Structure
+
 ```
 ├── index.html    # Main HTML file
 ├── style.css     # Stylesheet
@@ -47,6 +54,7 @@ A simple weather application built using vanilla JavaScript, HTML, and CSS. This
 ```
 
 ## Technologies Used
+
 - HTML5
 - CSS3
 - JavaScript (ES6)
