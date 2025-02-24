@@ -28,9 +28,9 @@ A simple weather app built with vanilla JavaScript that allows users to check th
 
 1. Sign up at [OpenWeatherMap](https://openweathermap.org/) and get your free API key.
 
-Create a file named config.js in the root of the project and add the following code:
 
 2. Create a file named `config.js` in the root of the project and add the following code:
+   
    ```js
    window.ENV = {
      API_KEY: "your_api_key", // Replace with your OpenWeatherMap API key
@@ -43,15 +43,6 @@ Create a file named config.js in the root of the project and add the following c
 1. Enter a city name in the search bar and click "Search".
 2. View current weather details including temperature, humidity, and weather condition.
 3. Refresh the page to search for a new location.
-
-## Project Structure
-
-```
-├── index.html    # Main HTML file
-├── style.css     # Stylesheet
-├── script.js     # JavaScript logic
-└── README.md     # Project documentation
-```
 
 ## Technologies Used
 
