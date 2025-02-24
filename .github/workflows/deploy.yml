@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Trigger on push to main branch
+      - main # Trigger on push to the main branch
 
 jobs:
   build:
@@ -13,6 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Generate config.js dynamically with environment variables from secrets
       - name: Generate config.js with environment variables
         run: |
           echo "window.ENV = {" > config.js
@@ -20,8 +21,16 @@ jobs:
           echo "  API_URL: '${{ secrets.API_URL }}'" >> config.js
           echo "};" >> config.js
 
+      # Debugging: List files and check content of config.js
+      - name: List files and show config.js content
+        run: |
+          ls -la  # List files in the current directory
+          cat config.js  # Show the content of config.js
+
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: main    # Deploy to the `main` branch
-          folder: .       # Deploy the root folder (where index.html is)
+          branch: gh-pages # Deploy to the gh-pages branch
+          folder: . # Deploy the entire root folder (where index.html is)
+
