@@ -16,7 +16,7 @@ A simple weather app built with vanilla JavaScript that allows users to check th
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/weather-app.git
+   git clone https://github.com/guilhermesgsilva/weather-app.git
    ```
 2. Navigate to the project directory:
    ```sh
